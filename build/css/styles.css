@@ -382,7 +382,7 @@ main {
   width: 80%;
   margin: auto 10%; }
 
-form .new-todo {
+form .newToDo {
   text-align: center;
   width: 80%;
   margin: auto 10%;
@@ -396,14 +396,16 @@ form .new-todo {
 
 .toDoItem:hover .check {
   display: inline;
-  background-color: #00f42f;
-  height: 20px; }
+  background-color: #00f42f; }
 .toDoItem:hover .delete {
   display: inline;
-  background-color: #ff0000;
-  height: 20px; }
+  background-color: #ff0000; }
 .toDoItem .delete {
   display: none; }
+.toDoItem button {
+  margin-left: 2%;
+  border-radius: 90%;
+  height: 20px; }
 
 footer::after {
   clear: both;

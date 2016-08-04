@@ -18,13 +18,12 @@
         </header>
 
         <main>
-            <form name='addToDoItem' method='post'>
-                <input type='text' name='newToDo' placeholder='What needs to be done?'>
-                <input type='submit' value='Add Item'>
+            <form action='submit' name='addToDoItem' method='post'>
+                <input class='newToDo' type='text' name='newToDo' placeholder='What needs to be done?'>
             </form>
 
             <ul class='items'>
-                <li>
+                <li class='toDoItem'>
                     <article>
                         <button class='check'></button>
                         <p></p>

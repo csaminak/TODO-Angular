@@ -9,24 +9,24 @@
 
 .toDoItem {
 
-}
-
-.toDoItem {
-
     &:hover {
         .check {
             display: inline;
             background-color: #00f42f;
-            height: 20px;
         }
         .delete {
             display: inline;
             background-color: #ff0000;
-            height: 20px;
         }
     }
 
     .delete {
         display: none;
+    }
+
+    button {
+        margin-left: $bttnMarginSpacing;
+        border-radius: $itemBttnRoundness;
+        height: $itemBttnSize;
     }
 }
