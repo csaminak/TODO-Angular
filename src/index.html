@@ -17,16 +17,16 @@
             <h1>To-Do List</h1>
         </header>
 
-        <main>
+        <main ng-controller='ToDoController as TDC'>
             <form action='submit' name='addToDoItem' method='post'>
                 <input class='newToDo' type='text' name='newToDo' placeholder='What needs to be done?'>
             </form>
 
             <ul class='items'>
-                <li class='toDoItem'>
+                <li class='toDoItem' ng-repeat='item in TDC.getList'>
                     <article>
                         <button class='check'></button>
-                        <p></p>
+                        <p>{{item.theTask}}</p>
                         <input>
                         <button class='delete'></button>
                     </article>
