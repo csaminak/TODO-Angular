@@ -13,7 +13,7 @@
 
     ToDoController.$inject = ['toDoList'];
 
-    function ToDoController() {
+    function ToDoController(/*toDoList*/) {
 
     }
 
