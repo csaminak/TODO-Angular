@@ -66,10 +66,19 @@
             return null;
         }
 
+        try {
+            JSON.parse(localStorage.getItem('taskList'));
+        } catch (error) {}
+
+        if (taskList === null) {
+            taskList = [];
+        }
+
+        console.log('after try catch');
+
         var newItem = {
             theTask: data.newToDo
         };
-
         taskList.push(newItem);
         localStorage.setItem('taskList', angular.toJson(newItem));
         return newItem;

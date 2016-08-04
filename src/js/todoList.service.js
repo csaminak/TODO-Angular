@@ -23,19 +23,25 @@
      * @param {Object}   data    a task object with details about task
      */
     function addItem(data) {
-        try {
-            var taskList = JSON.parse(localStorage.getItem('taskList'));
-        } catch (error) {}
-
+        var taskList = JSON.parse(localStorage.getItem('taskList'));
 
         if (!data) {
             return null;
         }
 
+        try {
+            JSON.parse(localStorage.getItem('taskList'));
+        } catch (error) {}
+
+        if (taskList === null) {
+            taskList = [];
+        }
+
+        console.log('after try catch');
+
         var newItem = {
             theTask: data.newToDo
         };
-
         taskList.push(newItem);
         localStorage.setItem('taskList', angular.toJson(newItem));
         return newItem;
