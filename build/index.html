@@ -18,8 +18,9 @@
         </header>
 
         <main ng-controller='ToDoController as TDC'>
-            <form name='addToDoItem' method='post'>
-                <input class='newToDo' type='text' name='newToDo' placeholder='What needs to be done?'>
+            <form name='addToDoItem' ng-submit='TDC.addItem(TDC.newItem)'>
+                <input class='newToDo' type='text' placeholder='What needs to be done?'
+                                name='newToDo' ng-model='TDC.newItem.newToDo'>
             </form>
 
             <ul class='items'>
