@@ -67,7 +67,7 @@
         }
 
         var newItem = {
-            theTask: data.theTask
+            theTask: data.newToDo
         };
 
         taskList.push(newItem);
