@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang='en' ng-app='todoApp'>
     <head>
         <meta charset='utf-8'>
         <title>TODO List</title>
@@ -14,15 +14,24 @@
     <body>
 
         <header>
-            <h1>todos</h1>
+            <h1>To-Do List</h1>
         </header>
 
         <main>
-            <form action='' method='post'>
-                <input type='text' class='new-todo' placeholder='What needs to be done?'>
+            <form name='addToDoTask' method='post'>
+                <input type='text' name='newToDo' placeholder='What needs to be done?'>
+                <input type='submit' value='Add task'>
             </form>
 
-            <ul class='items'>
+            <ul class='tasks'>
+                <li>
+                    <article>
+                        <button class='check'></button>
+                        <p></p>
+                        <input>
+                        <button class='delete'></button>
+                    </article>
+                </li>
                 <!-- example of existing item (incomplete) -->
                 <!--
                 <li>
