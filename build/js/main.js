@@ -18,7 +18,7 @@
         this.getList = toDoList.findAll();
         this.addItem = addItem;
         this.newItem = {};
-        this.remainingToDo = toDoList.remainingToDo();
+        // this.remainingToDo = toDoList.remainingToDo();
 
 
         /**
@@ -56,8 +56,8 @@
 
 
     /**
-     * [addItem description]
-     * @param {[type]} data [description]
+     * Add an item to the local storage
+     * @param {Object}   data    a task object with details about task
      */
     function addItem(data) {
         var taskList = JSON.parse(localStorage.getItem('taskList'));
@@ -76,8 +76,8 @@
     }
 
     /**
-     * [findAll description]
-     * @return {[type]} [description]
+     * gets 'taskList' from the local storage and returns it
+     * @return {Array}  contains objects for each task
      */
     function findAll() {
         try {
