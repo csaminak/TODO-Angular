@@ -1,0 +1,25 @@
+body {
+    background-color: $backgroundColor;
+    font-family: $primaryFont;
+    width: 100%;
+    margin: 5% auto;
+}
+
+header {
+    width: 80%;
+    margin: 0 10%;
+    text-align: center;
+
+    h1 {
+        color: $headerColor;
+        font-weight: lighter;
+        font-size: 5em;
+    }
+}
+main {
+    border: 2px solid $innerBorderColor;
+    box-shadow: 2px 3px 3px $innerBorderColor;
+    background-color: $mainBackgroundColor;
+    width: 80%;
+    margin: auto 10%;
+}
