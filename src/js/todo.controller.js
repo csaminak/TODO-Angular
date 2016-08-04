@@ -6,8 +6,8 @@
 
     ToDoController.$inject = ['toDoList'];
 
-    function ToDoController(/*toDoList*/) {
-
+    function ToDoController(toDoList) {
+        this.getList = toDoList.findAll();
     }
 
 })();
