@@ -23,7 +23,10 @@
      * @param {Object}   data    a task object with details about task
      */
     function addItem(data) {
-        var taskList = JSON.parse(localStorage.getItem('taskList'));
+        try {
+            var taskList = JSON.parse(localStorage.getItem('taskList'));
+        } catch (error) {}
+
 
         if (!data) {
             return null;
