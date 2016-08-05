@@ -1,40 +1,40 @@
 (function(){
     'use strict';
 
-    /*
     var assert =  chai.assert;
 
-    suite('registrar controller', function() {
+    suite('todo controller', function() {
 
-        var regController, $rootScope;
-        var mockStudentService = {};
-        setup(module('school'));
+        var todoController, $rootScope;
+        var mockToDoListService = {};
+
+        setup(module('todoApp'));
+
         setup(module(function($provide) {
-            $provide.value('student', mockStudentService);
+            $provide.value('toDoList', mockToDoListService);
         }));
-        setup(inject(function($controller, $q, _$rootScope_) {
+
+        setup(inject(function($controller, _$rootScope_) {
             $rootScope = _$rootScope_;
-
-            mockStudentService.findAll = function() {
-                var def = $q.defer();
-                def.resolve([]);
-                return def.promise;
+            mockToDoListService.addItem = function(data) {
+                mockToDoListService.addItem.called++;
+                return {theTask: data.newToDo};
             };
-            mockStudentService.add = function(data) {
-                mockStudentService.add.called++;
-                return {
-                    id: 1,
-                    name: data.name,
-                    grade: data.grade,
-                    datAdded: new Date()
-                };
+            mockToDoListService.findAll = function() {
+                return [];
             };
-            mockStudentService.add.called = 0;
-
-            regController = $controller('RegistrarController');
-            //name of the controller you are going to run tests
+            mockToDoListService.addItem.called = 0;
+            todoController = $controller('ToDoController');
         }));
 
+        test('todo controller *has data*', function() {
+            assert.isObject(todoController.newItem, 'controller has a new item object');
+        });
+
+    });
+
+
+    /*
         test('registrar controller has expected data', function() {
             // assert.isString(regController.path, 'path exists');
             assert.isArray(regController.students, 'controller has students array');
