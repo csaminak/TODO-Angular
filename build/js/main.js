@@ -13,6 +13,10 @@
 
     ToDoController.$inject = ['toDoList'];
 
+    /**
+     * A constructor function that defines the scope for any object.
+     * @param {[type]} toDoList [description]
+     */
     function ToDoController(toDoList) {
         var that = this;
         this.getList = toDoList.findAll();
