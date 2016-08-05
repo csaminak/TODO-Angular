@@ -30,21 +30,8 @@
         if(!data.newToDo) {
             return null;
         }
+
         console.log(data);
-        // var taskList = JSON.parse(localStorage.getItem('taskList'));
-        //
-        // if(taskList === null) {
-        //     localStorage.setItem('taskList', angular.toJson([]));
-        //     taskList = JSON.parse(localStorage.getItem('taskList'));
-        // }
-        //
-        // console.log(taskList, 'data: ' + data);
-        //
-        // try {
-        //     JSON.parse(localStorage.getItem('taskList'));
-        // } catch (error) {}
-        //
-        // console.log('after try catch');
 
         var newItem = {
             theTask: data.newToDo
@@ -53,8 +40,7 @@
         console.log('list: ' + taskList, 'item: ' + newItem);
 
         taskList.push(newItem);
-        localStorage.setItem('taskList', angular.toJson(newItem));
-
+        localStorage.setItem('taskList', angular.toJson(taskList));
         return newItem;
     }
 
@@ -65,8 +51,12 @@
     function findAll() {
         try {
             taskList = JSON.parse(localStorage.getItem('taskList'));
-            return taskList;
+            if (!taskList) {
+                taskList = [];
+            }
         } catch(error) {}
+        console.log(taskList);
+        return taskList;
     }
 
 
