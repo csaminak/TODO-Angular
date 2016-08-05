@@ -77,7 +77,14 @@ module.exports = function(grunt) {
                             'src/js/*.module.js',
                             'src/js/**/*.js',
                             'test/specs/**/*.spec.js'
-                        ]
+                        ],
+                        preprocessors: {
+                        'src/js/**/*.js': ['coverage']
+                        },
+                        reporters: ['dots', 'coverage'],
+                        coverageReporter: {
+                            type: 'text-summary'
+                        }
                     }
                 }
             }
