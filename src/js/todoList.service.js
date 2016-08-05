@@ -21,7 +21,7 @@
      */
     function addItem(data) {
         if (!data) {
-            console.log('no data');
+            console.log('no data'); //TODO DELETE
             return null;
         }
         if(!data.newToDo) {
@@ -30,16 +30,15 @@
         var taskList;
         taskList = checkTaskList();
 
-        console.log(data);
-
+        console.log(data); //TODO DELETE
+        console.log('list: ', taskList); //TODO DELETE
         var newItem = {
             theTask: data.newToDo
         };
 
-        console.log('list: ', taskList);
-        console.log('item: ', newItem);
-
         taskList.push(newItem);
+        console.log('list: ', taskList); //TODO DELETE
+        console.log('item: ', newItem); //TODO DELETE
         localStorage.setItem('taskList', angular.toJson(taskList));
         return newItem;
     }
@@ -51,7 +50,6 @@
     function findAll() {
         var taskList;
         taskList = checkTaskList();
-        console.log(taskList);
         return taskList;
     }
 
