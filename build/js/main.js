@@ -41,7 +41,6 @@
     angular.module('todoApp')
         .factory('toDoList', ToDoListService);
 
-
     /**
      * returns an object that has functions for the service provides
      * @return  {Object}    contains service methods
@@ -54,33 +53,45 @@
     }
 
 
+    var taskList;
 
     /**
      * Add an item to the local storage
      * @param {Object}   data    a task object with details about task
      */
     function addItem(data) {
-        var taskList = JSON.parse(localStorage.getItem('taskList'));
-
         if (!data) {
+            console.log('no data');
             return null;
         }
-
-        try {
-            JSON.parse(localStorage.getItem('taskList'));
-        } catch (error) {}
-
-        if (taskList === null) {
-            taskList = [];
+        if(!data.newToDo) {
+            return null;
         }
-
-        console.log('after try catch');
+        console.log(data);
+        // var taskList = JSON.parse(localStorage.getItem('taskList'));
+        //
+        // if(taskList === null) {
+        //     localStorage.setItem('taskList', angular.toJson([]));
+        //     taskList = JSON.parse(localStorage.getItem('taskList'));
+        // }
+        //
+        // console.log(taskList, 'data: ' + data);
+        //
+        // try {
+        //     JSON.parse(localStorage.getItem('taskList'));
+        // } catch (error) {}
+        //
+        // console.log('after try catch');
 
         var newItem = {
             theTask: data.newToDo
         };
+
+        console.log('list: ' + taskList, 'item: ' + newItem);
+
         taskList.push(newItem);
         localStorage.setItem('taskList', angular.toJson(newItem));
+
         return newItem;
     }
 
@@ -90,7 +101,8 @@
      */
     function findAll() {
         try {
-            return JSON.parse(localStorage.getItem('taskList'));
+            taskList = JSON.parse(localStorage.getItem('taskList'));
+            return taskList;
         } catch(error) {}
     }
 
