@@ -40,7 +40,7 @@ module.exports = function(grunt) {
                 options: {
                     sourceMap: true,
                 },
-                src: ['src/js/*.module.js', 'src/js/*.js'],
+                src: ['src/js/todoApp.module.js', 'src/js/*.js'],
                 dest: 'build/js/main.js'
             }
         },
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
                             'node_modules/angular-mocks/angular-mocks.js',
                             'src/js/*.module.js',
                             'src/js/**/*.js',
-                            'test/specs/**/*.spec.js'
+                            'test/specs/**/*.js'
                         ],
                         preprocessors: {
                         'src/js/**/*.js': ['coverage']
@@ -100,7 +100,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-karma');
 
     grunt.registerTask('test', ['karma']);
-    grunt.registerTask('build', ['clean', 'jshint', /*'test',*/ 'concat', 'sass', 'copy']);
+    grunt.registerTask('build', ['clean', 'jshint', 'test', 'concat', 'sass', 'copy']);
     grunt.registerTask('default', ['build']);
 
 };
