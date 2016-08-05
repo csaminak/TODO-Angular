@@ -52,8 +52,8 @@
         };
     }
 
-
     var taskList;
+
 
     /**
      * Add an item to the local storage
@@ -69,26 +69,13 @@
         }
 
         console.log(data);
-        // var taskList = JSON.parse(localStorage.getItem('taskList'));
-        //
-        // if(taskList === null) {
-        //     localStorage.setItem('taskList', angular.toJson([]));
-        //     taskList = JSON.parse(localStorage.getItem('taskList'));
-        // }
-        //
-        // console.log(taskList, 'data: ' + data);
-        //
-        // try {
-        //     JSON.parse(localStorage.getItem('taskList'));
-        // } catch (error) {}
-        //
-        // console.log('after try catch');
 
         var newItem = {
             theTask: data.newToDo
         };
 
-        console.log('list: ' + taskList, 'item: ' + newItem);
+        console.log('list: ', taskList);
+        console.log('item: ', newItem);
 
         taskList.push(newItem);
         localStorage.setItem('taskList', angular.toJson(taskList));
