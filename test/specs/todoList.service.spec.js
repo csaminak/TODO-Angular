@@ -17,11 +17,11 @@
 
         test('toDoList service functions exist', function() {
             assert.isFunction(ToDoListService.addItem, 'addItem is a function');
-            assert.isFunction(ToDoListService.findAll, 'findAll is a function');
+            assert.isFunction(ToDoListService.getList, 'getList is a function');
         });
 
-        test('toDoList findAll returns an array', function() {
-            assert.isArray(ToDoListService.findAll(), 'array is returned');
+        test('toDoList getList returns an array', function() {
+            assert.isArray(ToDoListService.getList(), 'array is returned');
         });
 
         test('toDoList addItem returns an object', function() {

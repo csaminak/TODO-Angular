@@ -20,7 +20,7 @@
                 mockToDoListService.addItem.called++;
                 return {theTask: data.newToDo};
             };
-            mockToDoListService.findAll = function() {
+            mockToDoListService.getList = function() {
                 return [];
             };
             mockToDoListService.addItem.called = 0;
