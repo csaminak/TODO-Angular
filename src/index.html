@@ -27,8 +27,8 @@
                 <li class='toDoItem' ng-repeat='item in TDC.getList'>
                     <article>
                         <button class='check'></button>
-                        <p>The task: {{item.theTask}}</p>
-                        <input>
+                        <p ng-hide='showText' ng-click='showInput=true; showText=true'>{{item.theTask}}</p>
+                        <input ng-show='showInput'>
                         <button class='delete'></button>
                     </article>
                 </li>

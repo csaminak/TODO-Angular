@@ -22,6 +22,8 @@
         this.getList = toDoList.findAll();
         this.addItem = addItem;
         this.newItem = {};
+        this.showInput = false;
+        this.showText = false;
         // this.remainingToDo = toDoList.remainingToDo();
 
 
