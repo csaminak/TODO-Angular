@@ -31,15 +31,20 @@
 
         test('todo controller has data', function() {
             assert.isObject(todoController.newItem, 'controller has a new item object');
-            assert.strictEqual(Object.keys(todoController.newItem).length, 0, 'newItem is an empty object');
+            assert.strictEqual(Object.keys(todoController.newItem).length, 0,
+                                                'newItem is an empty object');
             assert.isArray(todoController.getList, 'getList method on controller returns an array');
             assert.isFunction(todoController.addItem, 'controller has an addItem function');
+
+            $rootScope.$digest();
         });
 
         test('todo controller can add item', function() {
             todoController.addItem({newToDo: 'test task'});
             assert.strictEqual(mockToDoListService.addItem.called, 1,
                             'Service add item mthod was able to be called');
+
+            $rootScope.$digest();
         });
 
 
