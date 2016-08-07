@@ -80,7 +80,6 @@
         };
     }
 
-    var counter = 0;
 
     /**
      * compares the id to the each item in the taskList array. If id matches,
@@ -112,18 +111,18 @@
             return null;
         }
 
+        var taskList = checkTaskList();
+
         var newItem = {
-            id: counter,
+            id: taskList.length + 1,
             theTask: data.newToDo
         };
 
-        var taskList = checkTaskList();
 
         taskList.push(newItem);
         console.log('list: ', taskList); //TODO DELETE
         console.log('item: ', newItem); //TODO DELETE
         localStorage.setItem('taskList', angular.toJson(taskList));
-        counter++;
         return newItem;
     }
 
