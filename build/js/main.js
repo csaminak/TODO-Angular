@@ -19,13 +19,14 @@
      */
     function ToDoController(toDoList) {
         var that = this;
-        this.getList = toDoList.findAll();
+        this.getList = toDoList.getList();
+        console.log(toDoList.getList());
         this.addItem = addItem;
         this.newItem = {};
-        this.showInput = false;
-        this.showText = false;
+        // this.showInput = false;
+        // this.showText = false;
+        // this.updatedItem = {};
         // this.remainingToDo = toDoList.remainingToDo();
-
 
         /**
          * passes an object with data into function and sends it to the
@@ -34,7 +35,9 @@
          * @param   {Object}     data     contains a info about toDoItem
          */
         function addItem(data) {
-            toDoList.addItem(data);
+            console.log(data);
+            toDoList.addItem(data.newToDo);
+            that.getList = toDoList.getList();
             that.newItem = {};
         }
     }
@@ -54,7 +57,7 @@
     function ToDoListService() {
         return {
             addItem: addItem,
-            findAll: findAll
+            getList: getList
         };
     }
 
@@ -67,17 +70,12 @@
             console.log('no data'); //TODO DELETE
             return null;
         }
-        if(!data.newToDo) {
-            return null;
-        }
-        var taskList;
-        taskList = checkTaskList();
 
-        console.log(data); //TODO DELETE
-        console.log('list: ', taskList); //TODO DELETE
         var newItem = {
-            theTask: data.newToDo
+            theTask: data
         };
+
+        var taskList = checkTaskList();
 
         taskList.push(newItem);
         console.log('list: ', taskList); //TODO DELETE
@@ -90,10 +88,8 @@
      * gets 'taskList' from the local storage and returns it
      * @return {Array}  contains objects for each task
      */
-    function findAll() {
-        var taskList;
-        taskList = checkTaskList();
-        return taskList;
+    function getList() {
+        return checkTaskList();
     }
 
     /**

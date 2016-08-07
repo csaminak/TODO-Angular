@@ -12,13 +12,14 @@
      */
     function ToDoController(toDoList) {
         var that = this;
-        this.getList = toDoList.findAll();
+        this.getList = toDoList.getList();
+        console.log(toDoList.getList());
         this.addItem = addItem;
         this.newItem = {};
-        this.showInput = false;
-        this.showText = false;
+        // this.showInput = false;
+        // this.showText = false;
+        // this.updatedItem = {};
         // this.remainingToDo = toDoList.remainingToDo();
-
 
         /**
          * passes an object with data into function and sends it to the
@@ -27,7 +28,9 @@
          * @param   {Object}     data     contains a info about toDoItem
          */
         function addItem(data) {
-            toDoList.addItem(data);
+            console.log(data);
+            toDoList.addItem(data.newToDo);
+            that.getList = toDoList.getList();
             that.newItem = {};
         }
     }
