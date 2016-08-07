@@ -11,7 +11,7 @@
     function ToDoListService() {
         return {
             addItem: addItem,
-            findAll: findAll
+            getList: getList
         };
     }
 
@@ -24,17 +24,12 @@
             console.log('no data'); //TODO DELETE
             return null;
         }
-        if(!data.newToDo) {
-            return null;
-        }
-        var taskList;
-        taskList = checkTaskList();
 
-        console.log(data); //TODO DELETE
-        console.log('list: ', taskList); //TODO DELETE
         var newItem = {
-            theTask: data.newToDo
+            theTask: data
         };
+
+        var taskList = checkTaskList();
 
         taskList.push(newItem);
         console.log('list: ', taskList); //TODO DELETE
@@ -47,10 +42,8 @@
      * gets 'taskList' from the local storage and returns it
      * @return {Array}  contains objects for each task
      */
-    function findAll() {
-        var taskList;
-        taskList = checkTaskList();
-        return taskList;
+    function getList() {
+        return checkTaskList();
     }
 
     /**
