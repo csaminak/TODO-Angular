@@ -23,10 +23,16 @@
         console.log(toDoList.getList());
         this.addItem = addItem;
         this.newItem = {};
-        // this.showInput = false;
-        // this.showText = false;
-        // this.updatedItem = {};
-        // this.remainingToDo = toDoList.remainingToDo();
+        this.showInput = false;
+        this.updateItem = updateItem;
+        this.updatedToDo = {};
+
+        function updateItem(data, id) {
+            console.log('inside controller function update item: ', data, id);
+            toDoList.updateItem(data, id);
+            that.getList = toDoList.getList();
+            that.updatedToDo = {};
+        }
 
         /**
          * passes an object with data into function and sends it to the
@@ -55,9 +61,24 @@
      */
     function ToDoListService() {
         return {
+            getList: getList,
             addItem: addItem,
-            getList: getList
+            updateItem: updateItem
         };
+    }
+
+    var counter = 0;
+
+
+    function updateItem(data, id) {
+        var taskList = getList();
+        taskList.forEach(function(item) {
+            if(item.id === id) {
+                item.theTask = data.updatedToDo;
+                return;
+            }
+        });
+        localStorage.setItem('taskList', angular.toJson(taskList));
     }
 
     /**
@@ -71,7 +92,8 @@
         }
 
         var newItem = {
-            theTask: data
+            id: counter,
+            theTask: data.newToDo
         };
 
         var taskList = checkTaskList();
@@ -80,6 +102,7 @@
         console.log('list: ', taskList); //TODO DELETE
         console.log('item: ', newItem); //TODO DELETE
         localStorage.setItem('taskList', angular.toJson(taskList));
+        counter++;
         return newItem;
     }
 

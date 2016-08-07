@@ -16,10 +16,16 @@
         console.log(toDoList.getList());
         this.addItem = addItem;
         this.newItem = {};
-        // this.showInput = false;
-        // this.showText = false;
-        // this.updatedItem = {};
-        // this.remainingToDo = toDoList.remainingToDo();
+        this.showInput = false;
+        this.updateItem = updateItem;
+        this.updatedToDo = {};
+
+        function updateItem(data, id) {
+            console.log('inside controller function update item: ', data, id);
+            toDoList.updateItem(data, id);
+            that.getList = toDoList.getList();
+            that.updatedToDo = {};
+        }
 
         /**
          * passes an object with data into function and sends it to the
