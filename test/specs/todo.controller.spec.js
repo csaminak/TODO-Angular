@@ -27,37 +27,25 @@
             todoController = $controller('ToDoController');
         }));
 
-        test('todo controller *has data*', function() {
+
+
+        test('todo controller has data', function() {
             assert.isObject(todoController.newItem, 'controller has a new item object');
+            assert.isArray(todoController.getList, 'getList method on controller returns an array');
+            assert.isFunction(todoController.addItem, 'controller has an addItem function');
         });
+
+        test('todo controller can add item', function() {
+            todoController.addItem({newToDo: 'test task'});
+            assert.strictEqual(mockToDoListService.addItem.called, 1,
+                            'Service add item mthod was able to be called');
+        });
+
+
+
+
+
 
     });
-
-
-    /*
-        test('registrar controller has expected data', function() {
-            // assert.isString(regController.path, 'path exists');
-            assert.isArray(regController.students, 'controller has students array');
-            assert.isObject(regController.newStudent,
-                                        'controller has new student object');
-            assert.strictEqual(Object.keys(regController.newStudent).length, 0,
-                                        'controller has an empty object');
-            assert.isFunction(regController.addStudent,
-                                        'controller has method to add Student');
-
-            $rootScope.$digest();
-        });
-
-        test('registrar can add student', function() {
-            regController.addStudent({name: 'John', grade: 50});
-            assert.strictEqual(mockStudentService.add.called, 1,
-                                        'the student service add method was executed');
-
-            $rootScope.$digest();
-        });
-
-    });
-    */
-
 
 })();
