@@ -18,9 +18,9 @@
         </header>
 
         <main ng-controller='ToDoController as TDC' ng-cloak>
-            <form name='addToDoItem' ng-submit='TDC.addItem(TDC.newItem)'>
+            <form name='addToDoItem' ng-submit='TDC.addItem(TDC.newItem)' novalidate>
                 <input class='newToDo' type='text' placeholder='What needs to be done?'
-                                name='newToDo' ng-model='TDC.newItem.newToDo'>
+                                name='newToDo' ng-model='TDC.newItem.newToDo' required>
             </form>
 
             <ul class='items'>
