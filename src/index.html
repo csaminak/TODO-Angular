@@ -17,7 +17,7 @@
             <h1>To-Do List</h1>
         </header>
 
-        <main ng-controller='ToDoController as TDC'>
+        <main ng-controller='ToDoController as TDC' ng-cloak>
             <form name='addToDoItem' ng-submit='TDC.addItem(TDC.newItem)'>
                 <input class='newToDo' type='text' placeholder='What needs to be done?'
                                 name='newToDo' ng-model='TDC.newItem.newToDo'>
@@ -27,8 +27,10 @@
                 <li class='toDoItem' ng-repeat='item in TDC.getList'>
                     <article>
                         <button class='check'></button>
-                        <p ng-hide='showText' ng-click='showInput=true; showText=true'>{{item.theTask}}</p>
-                        <input ng-show='showInput'>
+                        <p ng-hide='showInput' ng-click='showInput=true'>{{item.theTask}}</p>
+                        <form ng-show='showInput' name='theTask' ng-submit='TDC.updateItem(TDC.updatedToDo, item.id); showInput=false'>
+                            <input placeholder={{item.theTask}} name='updatedToDo' ng-model='TDC.updatedToDo.updatedToDo'>
+                        </form>
                         <button class='delete'></button>
                     </article>
                 </li>
