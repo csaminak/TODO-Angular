@@ -10,14 +10,14 @@
 
         setup(module('todoApp'));
 
-        setup(inject(function(todoApp, _$rootScope_) {
-            ToDoListService = todoApp;
+        setup(inject(function(toDoList, _$rootScope_) {
+            ToDoListService = toDoList;
             $rootScope = _$rootScope_;
         }));
 
-        test('service functions exist', function() {
-
-
+        test('toDoList service functions exist', function() {
+            assert.isFunction(ToDoListService.addItem, 'addItem is a function');
+            assert.isFunction(ToDoListService.findAll, 'findAll is a function');
         });
 
 
