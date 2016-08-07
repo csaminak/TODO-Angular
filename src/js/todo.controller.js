@@ -28,8 +28,7 @@
          * @param   {Object}     data     contains a info about toDoItem
          */
         function addItem(data) {
-            console.log(data);
-            toDoList.addItem(data.newToDo);
+            toDoList.addItem(data);
             that.getList = toDoList.getList();
             that.newItem = {};
         }
