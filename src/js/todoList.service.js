@@ -18,15 +18,23 @@
 
     var counter = 0;
 
-
+    /**
+     * compares the id to the each item in the taskList array. If id matches,
+     * then updates the task for that specific item.
+     * @param  {Object}     data    contains the updated task info
+     * @param  {Number}     id      number to uniquely identify the task
+     * @return {void}
+     */
     function updateItem(data, id) {
         var taskList = getList();
+
         taskList.forEach(function(item) {
             if(item.id === id) {
                 item.theTask = data.updatedToDo;
                 return;
             }
         });
+
         localStorage.setItem('taskList', angular.toJson(taskList));
     }
 
