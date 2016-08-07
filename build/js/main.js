@@ -15,7 +15,7 @@
 
     /**
      * A constructor function that defines the scope for any object.
-     * @param {[type]} toDoList [description]
+     * @param {Object}   toDoList   the service constructor fn that returns an object
      */
     function ToDoController(toDoList) {
         var that = this;
@@ -27,8 +27,18 @@
         this.updateItem = updateItem;
         this.updatedToDo = {};
 
+        /**
+         * passes an object with data into a function and send it to the
+         * toDoList service function updateItem and then sets the updatedToDo
+         * to be an empty object to reset updatedToDo.
+         * @param  {Object}     data    contains the updated task info
+         * @param  {Number}     id      number to uniquely identify the task
+         * @return {Void}
+         */
         function updateItem(data, id) {
-            console.log('inside controller function update item: ', data, id);
+            if (!data || Object.keys(data).length === 0) {
+                return;
+            }
             toDoList.updateItem(data, id);
             that.getList = toDoList.getList();
             that.updatedToDo = {};
@@ -41,6 +51,9 @@
          * @param   {Object}     data     contains a info about toDoItem
          */
         function addItem(data) {
+            if (!data || Object.keys(data).length === 0) {
+                return;
+            }
             toDoList.addItem(data);
             that.getList = toDoList.getList();
             that.newItem = {};
@@ -69,15 +82,23 @@
 
     var counter = 0;
 
-
+    /**
+     * compares the id to the each item in the taskList array. If id matches,
+     * then updates the task for that specific item.
+     * @param  {Object}     data    contains the updated task info
+     * @param  {Number}     id      number to uniquely identify the task
+     * @return {void}
+     */
     function updateItem(data, id) {
         var taskList = getList();
+
         taskList.forEach(function(item) {
             if(item.id === id) {
                 item.theTask = data.updatedToDo;
                 return;
             }
         });
+
         localStorage.setItem('taskList', angular.toJson(taskList));
     }
 
