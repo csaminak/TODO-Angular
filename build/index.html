@@ -26,7 +26,7 @@
             <ul class='items'>
                 <li class='toDoItem' ng-repeat='item in TDC.getList'>
                     <article>
-                        <button class='check'></button>
+                        <button class='check' ng-click='TDC.makeComplete(item.id)'></button>
                         <p ng-hide='showInput' ng-click='showInput=true'>{{item.theTask}}</p>
                         <form ng-show='showInput' name='theTask' ng-submit='TDC.updateItem(TDC.updatedToDo, item.id); showInput=false'>
                             <input placeholder={{item.theTask}} name='updatedToDo' ng-model='TDC.updatedToDo.updatedToDo'>
