@@ -26,7 +26,8 @@
         this.showInput = false;
         this.updateItem = updateItem;
         this.updatedToDo = {};
-        this.incomplete = toDoList.calcIncomplete();
+        this.calcIncomplete = toDoList.calcIncomplete();
+
 
         /**
          * passes an object with data into a function and send it to the
