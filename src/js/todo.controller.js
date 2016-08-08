@@ -19,6 +19,7 @@
         this.showInput = false;
         this.updateItem = updateItem;
         this.updatedToDo = {};
+        this.incomplete = toDoList.calcIncomplete();
 
         /**
          * passes an object with data into a function and send it to the
@@ -49,6 +50,7 @@
             }
             toDoList.addItem(data);
             that.getList = toDoList.getList();
+            that.incomplete = toDoList.calcIncomplete();
             that.newItem = {};
         }
     }

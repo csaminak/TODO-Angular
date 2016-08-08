@@ -26,6 +26,7 @@
         this.showInput = false;
         this.updateItem = updateItem;
         this.updatedToDo = {};
+        this.incomplete = toDoList.calcIncomplete();
 
         /**
          * passes an object with data into a function and send it to the
@@ -56,6 +57,7 @@
             }
             toDoList.addItem(data);
             that.getList = toDoList.getList();
+            that.incomplete = toDoList.calcIncomplete();
             that.newItem = {};
         }
     }
@@ -76,10 +78,25 @@
         return {
             getList: getList,
             addItem: addItem,
-            updateItem: updateItem
+            updateItem: updateItem,
+            calcIncomplete: calcIncomplete
         };
     }
 
+    /**
+     * Calculates the number of items that are incomplete.
+     * @return {Number}     The total number of incomplete items
+     */
+    function calcIncomplete() {
+        var taskList = getList();
+        var incompleteItems = 0;
+        taskList.forEach(function(item) {
+            if (!item.complete) {
+                incompleteItems++;
+            }
+        });
+        return incompleteItems;
+    }
 
     /**
      * compares the id to the each item in the taskList array. If id matches,
@@ -115,7 +132,8 @@
 
         var newItem = {
             id: taskList.length + 1,
-            theTask: data.newToDo
+            theTask: data.newToDo,
+            complete: false
         };
 
 
