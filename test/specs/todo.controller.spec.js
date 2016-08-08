@@ -26,9 +26,6 @@
             mockToDoListService.calcIncomplete = function() {
                 return 0;
             };
-            // mockToDoListService.updateItem = function(data, id) {
-            //
-            // };
             mockToDoListService.addItem.called = 0;
             todoController = $controller('ToDoController');
         }));

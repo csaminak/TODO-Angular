@@ -220,7 +220,6 @@
      */
     function addItem(data) {
         if (!data) {
-            console.log('no data'); //TODO DELETE
             return null;
         }
 
@@ -234,8 +233,6 @@
 
 
         taskList.push(newItem);
-        console.log('list: ', taskList); //TODO DELETE
-        console.log('item: ', newItem); //TODO DELETE
         localStorage.setItem('taskList', angular.toJson(taskList));
         return newItem;
     }
