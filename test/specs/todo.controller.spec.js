@@ -23,6 +23,12 @@
             mockToDoListService.getList = function() {
                 return [];
             };
+            mockToDoListService.calcIncomplete = function() {
+                return 0;
+            };
+            // mockToDoListService.updateItem = function(data, id) {
+            //
+            // };
             mockToDoListService.addItem.called = 0;
             todoController = $controller('ToDoController');
         }));
@@ -42,7 +48,7 @@
         test('todo controller can add item', function() {
             todoController.addItem({newToDo: 'test task'});
             assert.strictEqual(mockToDoListService.addItem.called, 1,
-                            'Service add item mthod was able to be called');
+                            'Service add item method was able to be called');
 
             $rootScope.$digest();
         });
