@@ -20,7 +20,15 @@
         this.updateItem = updateItem;
         this.updatedToDo = {};
         this.calcIncomplete = toDoList.calcIncomplete();
+        this.makeComplete = makeComplete;
 
+
+        function makeComplete(id) {
+            console.log(id);
+            toDoList.makeComplete(id);
+            that.getList = toDoList.getList();
+            that.calcIncomplete = toDoList.calcIncomplete();
+        }
 
         /**
          * passes an object with data into a function and send it to the

@@ -13,8 +13,26 @@
             getList: getList,
             addItem: addItem,
             updateItem: updateItem,
-            calcIncomplete: calcIncomplete
+            calcIncomplete: calcIncomplete,
+            makeComplete: makeComplete
         };
+    }
+
+
+    /**
+     * changes the item.complete value to be the opposite boolean value
+     * @param  {Number}   id    the id value from the item
+     * @return {Void}
+     */
+    function makeComplete(id) {
+        var taskList = getList();
+        taskList.forEach(function(item) {
+            if (item.id === id) {
+                item.complete = !item.complete;
+                localStorage.setItem('taskList', angular.toJson(taskList));
+                return;
+            }
+        });
     }
 
     /**

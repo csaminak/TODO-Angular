@@ -27,7 +27,15 @@
         this.updateItem = updateItem;
         this.updatedToDo = {};
         this.calcIncomplete = toDoList.calcIncomplete();
+        this.makeComplete = makeComplete;
 
+
+        function makeComplete(id) {
+            console.log(id);
+            toDoList.makeComplete(id);
+            that.getList = toDoList.getList();
+            that.calcIncomplete = toDoList.calcIncomplete();
+        }
 
         /**
          * passes an object with data into a function and send it to the
@@ -80,8 +88,26 @@
             getList: getList,
             addItem: addItem,
             updateItem: updateItem,
-            calcIncomplete: calcIncomplete
+            calcIncomplete: calcIncomplete,
+            makeComplete: makeComplete
         };
+    }
+
+
+    /**
+     * changes the item.complete value to be the opposite boolean value
+     * @param  {Number}   id    the id value from the item
+     * @return {Void}
+     */
+    function makeComplete(id) {
+        var taskList = getList();
+        taskList.forEach(function(item) {
+            if (item.id === id) {
+                item.complete = !item.complete;
+                localStorage.setItem('taskList', angular.toJson(taskList));
+                return;
+            }
+        });
     }
 
     /**
