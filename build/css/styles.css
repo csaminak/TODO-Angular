@@ -400,6 +400,8 @@ form .newToDo {
 .toDoItem:hover .delete {
   display: inline;
   background-color: #ff0000; }
+.toDoItem .complete {
+  background-color: #00f42f; }
 .toDoItem .delete {
   display: none; }
 .toDoItem button {
