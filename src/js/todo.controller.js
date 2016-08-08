@@ -21,6 +21,14 @@
         this.updatedToDo = {};
         this.calcIncomplete = toDoList.calcIncomplete();
         this.makeComplete = makeComplete;
+        this.removeItem = removeItem;
+
+
+        function removeItem(id) {
+            toDoList.removeItem(id);
+            that.getList = toDoList.getList();
+            that.calcIncomplete = toDoList.calcIncomplete();
+        }
 
 
         function makeComplete(id) {

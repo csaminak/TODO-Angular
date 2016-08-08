@@ -28,6 +28,14 @@
         this.updatedToDo = {};
         this.calcIncomplete = toDoList.calcIncomplete();
         this.makeComplete = makeComplete;
+        this.removeItem = removeItem;
+
+
+        function removeItem(id) {
+            toDoList.removeItem(id);
+            that.getList = toDoList.getList();
+            that.calcIncomplete = toDoList.calcIncomplete();
+        }
 
 
         function makeComplete(id) {
@@ -89,10 +97,23 @@
             addItem: addItem,
             updateItem: updateItem,
             calcIncomplete: calcIncomplete,
-            makeComplete: makeComplete
+            makeComplete: makeComplete,
+            removeItem: removeItem
         };
     }
 
+
+    function removeItem(id) {
+        var taskList = getList();
+        taskList.forEach(function(item) {
+            if (item.id === id) {
+                var itemToDelete = taskList.indexOf(item);
+                taskList.splice(itemToDelete, 1);
+                localStorage.setItem('taskList', angular.toJson(taskList));
+                return;
+            }
+        });
+    }
 
     /**
      * changes the item.complete value to be the opposite boolean value
