@@ -40,9 +40,9 @@
                 <p class='remaining'><span class='incomplete-items'>{{TDC.calcIncomplete}}</span> items left</p>
                 <nav>
                     <ul>
-                        <li><button class='show-all active'>All</button></li>
-                        <li><button class='show-active'>Active</button></li>
-                        <li><button class='show-completed'>Completed</button></li>
+                        <li><button class='show-all' ng-click='TDC.showAll()'>All</button></li>
+                        <li><button class='show-active' ng-click='TDC.showActive()'>Active</button></li>
+                        <li><button class='show-completed' ng-click='TDC.showComplete()'>Completed</button></li>
                     </ul>
                 </nav>
                 <button class='clear' ng-click='TDC.clearCompleted()'>Clear completed</button>
