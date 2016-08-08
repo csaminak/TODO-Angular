@@ -29,6 +29,14 @@
         this.calcIncomplete = toDoList.calcIncomplete();
         this.makeComplete = makeComplete;
         this.removeItem = removeItem;
+        this.clearCompleted = clearCompleted;
+
+
+        function clearCompleted() {
+            toDoList.clearCompleted();
+            that.getList = toDoList.getList();
+            that.calcIncomplete = toDoList.calcIncomplete();
+        }
 
 
         function removeItem(id) {
@@ -98,10 +106,23 @@
             updateItem: updateItem,
             calcIncomplete: calcIncomplete,
             makeComplete: makeComplete,
-            removeItem: removeItem
+            removeItem: removeItem,
+            clearCompleted: clearCompleted
         };
     }
 
+
+
+    function clearCompleted() {
+        var taskList = getList();
+        taskList.forEach(function(item) {
+            if(item.complete) {
+                var itemToDelete = taskList.indexOf(item);
+                taskList.splice(itemToDelete, 1);
+                localStorage.setItem('taskList', angular.toJson(taskList));
+            }
+        });
+    }
 
     function removeItem(id) {
         var taskList = getList();
