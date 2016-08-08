@@ -34,43 +34,10 @@
                         <button class='delete'></button>
                     </article>
                 </li>
-                <!-- example of existing item (incomplete) -->
-                <!--
-                <li>
-                    <article>
-                        <button class='check'></button>
-                        <p>learn html</p>
-                        <input type='text' class='edit-todo' value='learn html'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-                -->
-                <!-- example of completed item -->
-                <!--
-                <li>
-                    <article class='completed'>
-                        <button class='check'></button>
-                        <p class='complete'>learn css</p>
-                        <input type='text' class='edit-todo' value='learn css'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-                -->
-                <!-- example of item currently being edited -->
-                <!--
-                <li>
-                    <article class='editing'>
-                        <button class='check'></button>
-                        <p>learn javascript</p>
-                        <input type='text' class='edit-todo' value='learn javascript'>
-                        <button class='delete'>X</button>
-                    </article>
-                </li>
-                -->
-            </ul>
+
 
             <footer>
-                <p class='remaining'><span class='incomplete-items'>0</span> items left</p>
+                <p class='remaining'><span class='incomplete-items'>{{TDC.incomplete}}</span> items left</p>
                 <nav>
                     <ul>
                         <li><button class='show-all active'>All</button></li>
